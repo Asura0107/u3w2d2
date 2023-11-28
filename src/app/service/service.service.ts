@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
-import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ServiceService {
   constructor() {}
+  async recuperaPosts() {
+    return await (await fetch('../../assets/db.json')).json();
+  }
 }
-fetch('../assets/db.json')
-  .then((resp) => resp.json())
-  .then((post) => {
-    console.log(post);
-  });

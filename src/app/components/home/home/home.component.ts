@@ -10,7 +10,11 @@ export class HomeComponent implements OnInit {
   constructor(private route: Router) {}
 
   ngOnInit(): void {}
-  postattivi(){
-    this.route.navigate[('/postattivi)]
+  postAttivi() {
+    this.route.navigate(['/postattivi']);
+  }
+
+  postInattivi() {
+    this.route.navigate(['/nopost']);
   }
 }

@@ -1,28 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
+import { ServiceService } from 'src/app/service/service.service';
 @Component({
   selector: 'app-activepost',
   templateUrl: './activepost.component.html',
   styleUrls: ['./activepost.component.scss'],
 })
 export class ActivepostComponent implements OnInit {
-  constructor() {}
+  posts: User[] = [];
+
+  constructor(private postSrv: ServiceService) {
+    this.postSrv.recuperaPosts().then((posts) => {
+      this.posts = posts;
+    });
+  }
 
   ngOnInit(): void {}
-}
-
-class activepost implements User {
-  id: number;
-  title: string;
-  body: string;
-  active: boolean;
-  constructor(_title: string, _body: string, _active: boolean, _id: number) {
-    this.id = _id;
-    this.title = _title;
-    this.body = _body;
-    this.active = _active;
-  }
-  isactive() {
-    return this.active;
-  }
 }
